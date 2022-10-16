@@ -1,0 +1,39 @@
+.navbar {
+    @apply bg-gray-800 border-b border-gray-600;
+    nav {
+        @apply flex items-center justify-between;
+        section {
+            @apply flex items-center;
+            & > a {
+                @apply hover:bg-gray-900 px-4 py-3 focus:outline-none focus:bg-gray-900 text-gray-500
+            }
+
+            &:first-of-type a:first-of-type {
+                @apply font-medium
+            }
+
+            & > div {
+                @apply relative px-4;
+                button {
+                    @apply rounded-full overflow-hidden inline-flex items-center justify-between
+                    focus:outline-none focus:ring-2 focus:ring-indigo-500 mt-1;
+                    img {
+                        @apply w-8
+                    }
+                }
+
+                form {
+                    @apply absolute bg-gray-800 top-12 right-4 whitespace-nowrap flex flex-col rounded py-1 shadow-lg;
+                    a, button {
+                        @apply px-4 py-1 inline-flex rounded-none hover:bg-gray-900 focus:outline-none focus:ring-0
+                        focus:bg-gray-900 focus:text-gray-400 hover:text-gray-400;
+                    }
+
+                    hr {
+                        @apply my-1 border-gray-700
+                    }
+                }
+            }
+        }
+    }
+}

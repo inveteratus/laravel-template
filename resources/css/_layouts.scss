@@ -1,0 +1,28 @@
+.guest {
+    @apply antialiased bg-gray-700 flex flex-col font-sans min-h-screen scroll-smooth text-gray-500;
+    main {
+        @apply flex flex-col flex-grow;
+    }
+    footer {
+        p {
+            @apply px-2 py-1 text-center text-sm text-gray-600
+        }
+    }
+}
+
+.app {
+    @apply antialiased bg-gray-700 flex flex-col font-sans min-h-screen scroll-smooth text-gray-500;
+    main {
+        @apply flex flex-col flex-grow;
+    }
+
+    footer {
+        @apply bg-gray-800 border-t border-gray-600 flex items-center justify-between;
+        section {
+            @apply flex space-x-4 px-4;
+            &:last-of-type {
+                @apply justify-end;
+            }
+        }
+    }
+}
