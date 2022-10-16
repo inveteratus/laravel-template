@@ -14,7 +14,7 @@
                         <a href="#">Long Link</a>
                         <a href="#">Very Long Link</a>
                         <hr>
-                        @if (config('telescope.enabled') && Route::has('telescope') && Auth::user()->superuser)
+                        @if (Auth::user()->superuser && Route::has('telescope'))
                             <a href="{{ route('telescope') }} " target="{{ str(config('app.name') . ' Telescope')->slug() }}">Telescope</a>
                             <hr>
                         @endif
