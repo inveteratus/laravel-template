@@ -1,8 +1,8 @@
 ## Installation
 
-~~~
-mkdir myapp
-cd myapp
+~~~sh
+mkdir -p /path/to/project
+cd /path/to/project
 
 git clone git@github.com:inveteratus/laravel-template.git .
 
@@ -11,13 +11,33 @@ npm install
 
 cp .env.example .env
 
-sail up -d
+vendor/bin/sail up -d
 
-sail artisan key:generate
-sail artisan storage:link
-sail artisan migrate:fresh --seed 
+vendor/bin/sail artisan key:generate
+vendor/bin/sail artisan storage:link
+vendor/bin/sail artisan migrate:fresh --seed 
 
 npm run dev
 ~~~
 
 Finally, navigate to [http://localhost](http://localhost/)
+
+## Post Installation
+
+Add the scheduler to your crontab:
+
+```
+* * * * * cd /path/to/project && php artisan schedule:run >> /dev/null 2>&1
+```
+
+During development, you will need to use sail:
+
+```
+* * * * * cd /path/to/project && vendor/bin/sail artisan schedule:run >> /dev/null 2>&1
+```
+
+or manually call:
+
+```
+vendor/bin/sail artisan schedule:work
+```
