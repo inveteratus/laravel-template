@@ -9,6 +9,8 @@ git clone git@github.com:inveteratus/laravel-template.git .
 composer install
 npm install
 
+cp .env.example .env
+
 sail up -d
 
 sail artisan key:generate
