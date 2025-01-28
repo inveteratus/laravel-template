@@ -21,10 +21,10 @@ it('resets the password successfully', function () {
 
     Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
         $this->post(route('password.reset.store'), [
-                'token' => $notification->token,
-                'email' => $user->email,
-                'password' => 'something-else',
-            ])
+            'token' => $notification->token,
+            'email' => $user->email,
+            'password' => 'something-else',
+        ])
             ->assertSessionHasNoErrors()
             ->assertRedirect(route('login'));
 
