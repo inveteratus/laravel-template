@@ -11,6 +11,7 @@ class ForgotPasswordController extends Controller
 {
     public function __invoke(ForgotPasswordRequest $request): RedirectResponse
     {
+        /** @phpstan-ignore staticMethod.notFound */
         Password::SendResetLink($request->only('email'));
 
         return back()
