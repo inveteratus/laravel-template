@@ -20,7 +20,7 @@ class ResetPasswordController extends Controller
                     'password' => Hash::make($request->password),
                     'remember_token' => Str::random(60),
                 ])->save();
-            }
+            },
         );
 
         return $status === Password::PASSWORD_RESET
