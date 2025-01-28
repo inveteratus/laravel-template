@@ -14,18 +14,18 @@ it('registers a new user', function () {
     Notification::fake();
 
     $this->post(route('register'), [
-            'name' => 'Test',
-            'email' => 'test@example.com',
-            'password' => 'password',
-        ])
+        'name' => 'Test',
+        'email' => 'test@example.com',
+        'password' => 'password',
+    ])
         ->assertRedirectToRoute('home');
 
     $this->assertAuthenticated();
     $this->assertDatabaseHas('users', ['email' => 'test@example.com']);
 
     Notification::assertSentTo(
-        notifiable:User::query()->where('email', 'test@example.com')->first(),
-        notification:VerifyEmail::class
+        notifiable: User::query()->where('email', 'test@example.com')->first(),
+        notification: VerifyEmail::class,
     );
 });
 
