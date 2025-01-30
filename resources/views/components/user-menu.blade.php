@@ -1,8 +1,14 @@
 <div x-data="{open:false}" class="acme-user-menu">
-    <button type="button" @click="open=!open">
-        <span>{{ auth()->user()->name }}</span>
-        <x-heroicon-m-chevron-down />
-    </button>
+    @if (auth()->user()->profile_image)
+        <button type="button" @click="open=!open" class="image">
+            <img src="{{ Storage::url(auth()->user()->profile_image) }}" alt="" />
+        </button>
+    @else
+        <button type="button" @click="open=!open" class="text">
+            <span>{{ auth()->user()->name }}</span>
+            <x-heroicon-m-chevron-down />
+        </button>
+    @endif
     <div x-cloak x-show="open" @click.away="open=false">
         {{ $slot }}
         @if (strlen($slot))
