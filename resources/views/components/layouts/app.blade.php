@@ -8,7 +8,7 @@
                 <div>
                     <x-theme-selector />
                     <x-user-menu>
-                        <a href="{{ route('profile') }}">Profile</a>
+                        <a href="{{ route('profile') }}">Profile &hellip;</a>
                     </x-user-menu>
                 </div>
             @else
@@ -24,4 +24,5 @@
         </nav>
     </header>
     {{ $slot }}
+    <x-status />
 </x-html>

@@ -31,13 +31,15 @@ Route::middleware('auth')->group(function () {
     Route::view('profile', 'auth.profile')
         ->name('profile');
     Route::post('profile/update-profile', [ProfileController::class, 'updateProfile'])
-        ->name('update-profile');
+        ->name('profile.update-profile');
     Route::post('profile/verify-email', [ProfileController::class, 'verifyEmail'])
-        ->name('verify-email');
+        ->name('profile.verify-email');
     Route::post('profile/change-password', [ProfileController::class, 'changePassword'])
-        ->name('change-password');
+        ->name('profile.change-password');
     Route::delete('profile/delete-account', [ProfileController::class, 'deleteAccount'])
-        ->name('delete-account');
+        ->name('profile.delete-account');
+    Route::post('profile/change-image', [ProfileController::class, 'changeImage'])
+        ->name('profile.change-image');
     Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)
         ->middleware(['auth', 'signed', 'throttle:6,1'])
         ->name('verification.verify');

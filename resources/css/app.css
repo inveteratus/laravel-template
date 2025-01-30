@@ -7,6 +7,8 @@
 @source "../views";
 @custom-variant dark (&:where(.dark, .dark *));
 
+[x-cloak] { display: none !important; }
+
 body.app {
     @apply antialiased bg-slate-200 dark:bg-slate-800 flex flex-col font-sans min-h-screen;
 
