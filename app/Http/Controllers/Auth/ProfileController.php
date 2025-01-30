@@ -51,6 +51,9 @@ class ProfileController
     public function deleteAccount(DeleteAccountRequest $request): RedirectResponse
     {
         $user = $request->user();
+        if ($user->profile_image) {
+            Storage::disk('s3')->delete($user->profile_image);
+        }
 
         Auth::logout();
         $user->delete();
@@ -58,7 +61,7 @@ class ProfileController
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return to_route('profile')
+        return to_route('index')
             ->with('status', 'Account deleted');
     }
 
@@ -74,17 +77,12 @@ class ProfileController
             /** @var UploadedFile $file */
             $file = $request->file('image');
 
-            if ($file->getMimeType() === 'image/jpeg') {
-                $in = imagecreatefromjpeg($file);
-            } else {
-                $in = imagecreatefrompng($file);
-            }
-
+            $in = $file->getMimeType() === 'image/jpeg' ? imagecreatefromjpeg($file) : imagecreatefrompng($file);
             if (!$in) {
                 return to_route('profile')->withErrors(['image' => 'Cannot read image.']);
             }
 
-            $stored = $this->resize($file, $in, 200);
+            $stored = $this->resizeAndStore($file, $in, 200);
             if ($stored) {
                 $user->update(['profile_image' => $stored]);
             }
@@ -97,7 +95,7 @@ class ProfileController
     }
 
     /** @param int<1,max> $size */
-    private function resize(UploadedFile $file, GdImage $image, int $size): string|false
+    private function resizeAndStore(UploadedFile $file, GdImage $image, int $size): string|false
     {
         $imageWidth = imagesx($image);
         $imageHeight = imagesy($image);
