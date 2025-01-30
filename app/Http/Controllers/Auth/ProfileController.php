@@ -52,7 +52,7 @@ class ProfileController
     {
         $user = $request->user();
         if ($user->profile_image) {
-            Storage::disk('s3')->delete($user->profile_image);
+            Storage::delete($user->profile_image);
         }
 
         Auth::logout();
@@ -69,7 +69,7 @@ class ProfileController
     {
         $user = $request->user();
         if ($user->profile_image) {
-            Storage::disk('s3')->delete($user->profile_image);
+            Storage::delete($user->profile_image);
             $user->update(['profile_image' => null]);
         }
 
@@ -101,7 +101,7 @@ class ProfileController
         $imageHeight = imagesy($image);
 
         if (($imageWidth == $size) && ($imageHeight == $size)) {
-            return Storage::disk('s3')->putFile('profile_images', $file, 'public');
+            return Storage::putFile('profile_images', $file, 'public');
         }
 
         $copy = imagecreatetruecolor($size, $size);
@@ -110,7 +110,7 @@ class ProfileController
         $tempfile = tempnam(sys_get_temp_dir(), 'image');
         imagejpeg($copy, $tempfile);
 
-        $result = Storage::disk('s3')->putFile('profile_images', new File($tempfile), 'public');
+        $result = Storage::putFile('profile_images', new File($tempfile), 'public');
         imagedestroy($copy);
 
         unlink($tempfile);
