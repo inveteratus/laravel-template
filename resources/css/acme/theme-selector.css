@@ -11,7 +11,7 @@ div.acme-theme-selector {
     }
 
     & > div {
-        @apply absolute top-[4.25rem] right-2 bg-slate-100 dark:bg-slate-900 flex flex-col py-1 rounded shadow
+        @apply absolute top-[4.25rem] right-2 bg-slate-50 dark:bg-slate-950 flex flex-col py-1 rounded shadow
         z-10;
 
         & > button {

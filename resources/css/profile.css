@@ -1,25 +1,35 @@
 main[class="profile"] {
-    @apply container grid 2xl:grid-cols-2 gap-4 my-4 mx-auto;
-    & > form {
-        @apply rounded bg-slate-100 dark:bg-slate-900 p-4 border border-slate-300 dark:border-slate-700
-        space-y-4 flex flex-col;
-        & > div {
-            @apply flex flex-col space-y-4;
-            & > div {
-                @apply flex flex-col;
-                & > h2 {
-                    @apply font-medium text-slate-600 dark:text-slate-400;
-                }
-                & > p {
-                    @apply text-sm text-slate-500 dark:text-slate-500;
-                }
+    @apply container flex my-8 space-x-8 mx-auto;
+    & > div:first-of-type {
+        @apply flex flex-col bg-slate-100 dark:bg-slate-900 w-96 p-4 space-y-2 rounded-md;
+        & > button {
+            @apply flex space-x-2 border border-slate-300 dark:border-slate-700 p-2 hover:bg-slate-50 dark:hover:bg-slate-950 rounded-sm;
+            & > span {
+                @apply text-slate-700 dark:text-slate-300;
+            }
+            & > svg {
+                @apply size-6 text-slate-500 dark:text-slate-500;
             }
         }
-        & > footer {
-            @apply flex flex-grow items-end justify-end;
-            button.danger {
-                @apply bg-red-500 dark:bg-red-500 focus:ring-red-500 dark:focus:ring-red-500 hover:bg-red-600
-                dark:hover:bg-red-600;
+    }
+    & > div:last-of-type {
+        @apply flex flex-grow bg-slate-100 dark:bg-slate-900 rounded-md;
+        form {
+            h2 {
+                @apply text-lg font-medium text-slate-600 dark:text-slate-400;
+            }
+            @apply flex flex-col flex-grow p-4 rounded-md space-y-4 max-w-lg;
+
+            p {
+                @apply text-slate-700 dark:text-slate-300;
+            }
+
+            footer {
+                @apply border-t border-slate-300 dark:border-slate-700 pt-4;
+
+                button.danger {
+                    @apply bg-red-500 focus:ring-red-500;
+                }
             }
         }
     }

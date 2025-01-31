@@ -28,18 +28,6 @@ Route::middleware('guest')->group(function () {
 Route::post('logout', LogoutController::class)->name('logout');
 
 Route::middleware('auth')->group(function () {
-    Route::view('profile', 'auth.profile')
-        ->name('profile');
-    Route::post('profile/update-profile', [ProfileController::class, 'updateProfile'])
-        ->name('profile.update-profile');
-    Route::post('profile/verify-email', [ProfileController::class, 'verifyEmail'])
-        ->name('profile.verify-email');
-    Route::post('profile/change-password', [ProfileController::class, 'changePassword'])
-        ->name('profile.change-password');
-    Route::delete('profile/delete-account', [ProfileController::class, 'deleteAccount'])
-        ->name('profile.delete-account');
-    Route::post('profile/change-image', [ProfileController::class, 'changeImage'])
-        ->name('profile.change-image');
     Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)
         ->middleware(['auth', 'signed', 'throttle:6,1'])
         ->name('verification.verify');

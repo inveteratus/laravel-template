@@ -10,12 +10,17 @@
         </button>
     @endif
     <div x-cloak x-show="open" @click.away="open=false">
+        <a href="{{ route('profile.index') }}">
+            <x-heroicon-o-user />
+            <span>Profile &hellip;</span>
+        </a>
         {{ $slot }}
-        @if (strlen($slot))
-            <hr />
-        @endif
+        <hr />
         <x-form :action="route('logout')">
-            <button type="submit">Logout</button>
+            <button type="submit">
+                <x-heroicon-o-power />
+                <span>Logout</span>
+            </button>
         </x-form>
     </div>
 </div>
