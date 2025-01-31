@@ -7,9 +7,7 @@
                 </div>
                 <div>
                     <x-theme-selector />
-                    <x-user-menu>
-                        <a href="{{ route('profile.index') }}">Profile &hellip;</a>
-                    </x-user-menu>
+                    <x-user-menu />
                 </div>
             @else
                 <div>
