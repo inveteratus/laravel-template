@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
 
 class UpdateProfileRequest extends FormRequest
 {
-    /** @return array<string,string> */
+    /** @return array<string,string|string[]> */
     public function rules(): array
     {
         return [
