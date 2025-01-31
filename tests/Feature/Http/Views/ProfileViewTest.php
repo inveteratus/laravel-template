@@ -8,4 +8,3 @@ it('renders the page', function () {
         ->assertOk()
         ->assertViewIs('profile');
 });
-
