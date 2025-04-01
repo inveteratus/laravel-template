@@ -11,7 +11,7 @@
         "axios": "^1.8.4",
         "concurrently": "^9.1.2",
         "laravel-vite-plugin": "^1.2",
-        "npm-check-updates": "^17.1.15",
+        "npm-check-updates": "^17.1.16",
         "postcss": "^8.5.3",
         "tailwindcss": "^4.0.12",
         "vite": "^6.2"
